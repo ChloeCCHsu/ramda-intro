@@ -1,4 +1,4 @@
-![](https://github.com/ChloeCCHsu/ramda-intro/blob/master/img/ramda.png)
+<img width='300' src='http://10.120.129.20/io/chloe/ramda-intro/img/ramda.png'/> <h1 style="text-align:right">Ramda<h1>
 ---
 ### What's Ramda
 
@@ -7,7 +7,7 @@
  
  - Designed in pure function style
  
- - Immutable od user data
+ - Immutable structures
  
  - Functions are automatically curried
  
@@ -65,19 +65,7 @@ const add2 = curriedAdd(2) // (b) => 2 + b
 add2(10) // 12
 
 ```
----
-### Auto Currying
-
-Transforming a function that takes multiple arguments into one that 
-
-if given less than its correct number of arguments 
-
-returns a function that takes the rest.
-
-
-When the function gets the correct number of arguments it is then evaluated.
-
-[see example](https://codepen.io/chloehsu/pen/EgaLAG?editors=0012)
+[autoCurried](https://codepen.io/chloehsu/pen/EgaLAG?editors=0012)
 
 ---
 ### Why Curry
@@ -112,23 +100,23 @@ import R from 'ramda';
 
 or from a CDN
 
-```js
+```html
 <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
 ```
 
 ---
 ### Type Signatures
 
-<img width="750" src='https://github.com/ChloeCCHsu/ramda-intro/blob/master/img/ramda-doc.png'/>
+<img width="750" src='http://10.120.129.20/io/chloe/ramda-intro/img/ramda-doc.png'/>
 
 ---
 ### Type Signatures (cont.)
 
-- Named Types:   *String*,   *Number*,   *Boolean* ...
+- **Named Types**:   *String*,   *Number*,   *Boolean* ...
 
-- List of Values:   *[Number]*, *[String]* ...
+- **List of Values**:   *[Number]*, *[String]* ...
 
-- functions:  *(Number -> Number)*,   *(String -> [String])* ...
+- **Functions**:  *(Number -> Number)*,   *(String -> [String])* ...
 
 
 ```js
@@ -144,7 +132,7 @@ findWords('She sells seashells by the seashore');
 
 ### Type Signatures (cont.)
 
-- Currying:  *Number → Number → Number*
+- **Currying**:  *Number → Number → Number*
 
 ```js
 // calculateTax :: Number -> Number -> Number
@@ -154,7 +142,7 @@ const calculateTax = R.curry((rate,  base)
     
 ```
     
-- Type Variables :   *(a -> b) -> [a] -> [b]*
+- **Type Variables** :   *(a -> b) -> [a] -> [b]*
 
 ```js
 // map :: (String -> Number) -> [String] -> [Number]
@@ -191,8 +179,27 @@ const incomplete = function(arr) {
 
 console.log(incomplete(tasks));
 ```
+---
+#### Todo list: list incomplete tasks
 
-writing with ramda
+```js
+const incomplete = function(arr) {
+  
+  const tamp = [];
+  
+  arr.map((obj)=>{
+    if(obj.complete === false){
+      tamp.push(obj);
+    }
+  });
+  
+  return tamp;
+}
+
+console.log(incomplete(tasks));
+```
+
+writing in ramda
 
 ```js
 const incomplete = R.filter(R.whereEq({complete: false}));
@@ -205,7 +212,7 @@ console.log(incomplete(tasks));
 #### Todo list: list the tasks that active by user
 
 ```js
-const groupBy= function ( array , f ) {
+const groupBy = function ( array , f ) {
 
   const groups = {};
   
@@ -223,7 +230,30 @@ const groupBy= function ( array , f ) {
 console.log(groupBy(incomplete(tasks) , (obj) => [obj.username]));
 
 ```
-writing with ramda
+
+---
+#### Todo list: list the tasks that active by user
+
+```js
+const groupBy = function ( array , f ) {
+
+  const groups = {};
+  
+  array.forEach((o)=>{
+    const group = JSON.stringify(f(o));
+    groups[group] = groups[group] || [];
+    groups[group].push( o );  
+  });
+  
+  return Object.keys(groups).map(( group )=>{
+    return groups[group]; 
+  })
+}
+
+console.log(groupBy(incomplete(tasks) , (obj) => [obj.username]));
+
+```
+writing in ramda
 
 ```js
 const groupByUser = R.groupBy(R.prop('username'));
@@ -237,8 +267,17 @@ console.log(activeByUser(tasks));
 
 [Todo List ](https://codepen.io/chloehsu/pen/jrPxJm?editors=0010)
 
-[Another Curry Example](https://codepen.io/chloehsu/pen/EgaLAG?editors=0012)
+[Another Curry Example](https://codepen.io/chloehsu/pen/xEGwRR)
 
+--
+### Ref
 
+- [Ramda](http://ramdajs.com/0.22.1/index.html)
+- [Why Ramda](http://fr.umio.us/why-ramda/)
+- [Hands-on Functional Programming with Ramda.js](https://www.sitepoint.com/functional-programming-with-ramda/)
+- [Why Curry Help](https://hughfdjackson.com/javascript/why-curry-helps/)
+- [Functional Programming](https://drboolean.gitbooks.io/mostly-adequate-guide/content/)
+- [Functional Programming Jargon](https://github.com/hemanth/functional-programming-jargon/tree/52b9f361b64db3c7d4b9fdc5aeeb0e92f8e33abf#type-signatures)
+- [TypeSignatures](https://github.com/ramda/ramda/wiki/Type-Signatures)
 
 
