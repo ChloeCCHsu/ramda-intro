@@ -1,4 +1,4 @@
-<img width='300' src='https://github.com/ChloeCCHsu/ramda-intro/blob/master/img/ramda.png'/>
+<img width='300' src='img/ramda.png'/>
 <h1 style="text-align:right">Ramda<h1>
 ---
 ### What's Ramda
