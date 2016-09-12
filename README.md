@@ -1,4 +1,4 @@
-<img src='http://10.120.129.20/io/chloe/ramda-intro/img/ramda.jpg'/>
+![](https://github.com/ChloeCCHsu/ramda-intro/blob/master/img/ramda.png)
 ---
 ### What's Ramda
 
@@ -119,7 +119,7 @@ or from a CDN
 ---
 ### Type Signatures
 
-<img width="750" src='http://10.120.129.20/io/chloe/ramda-intro/img/ramda-doc.png'/>
+<img width="750" src='https://github.com/ChloeCCHsu/ramda-intro/blob/master/img/ramda-doc.png'/>
 
 ---
 ### Type Signatures (cont.)
