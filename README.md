@@ -108,7 +108,7 @@ or from a CDN
 ---
 ### Type Signatures
 
-<img width="750" src='https://github.com/ChloeCCHsu/ramda-intro/blob/master/img/ramda-doc.png'/>
+<img width="750" src='img/ramda-doc.png'/>
 
 ---
 ### Type Signatures (cont.)
